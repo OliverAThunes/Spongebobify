@@ -7,7 +7,7 @@ fn main() {
     // Get CLI arguments
     let matches = get_matches();
 
-    let text = matches.value_of("text").unwrap();
+    let text = matches.value_of("text").unwrap().to_lowercase();
     let chance = matches
         .value_of("chance")
         .unwrap_or("0.5")
