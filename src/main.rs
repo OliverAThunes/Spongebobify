@@ -33,7 +33,7 @@ fn main() {
 fn get_matches() -> clap::ArgMatches<'static> {
     App::new("Spongebobify")
         .version("1.2.1")
-        .author("Oliver A. Thunæs <oliver@netron.no")
+        .author("Oliver A. Thunæs <oliver@netron.no>")
         .about("Spongebobify your text")
         .arg(
             Arg::with_name("text")
