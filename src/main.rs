@@ -8,11 +8,19 @@ fn main() {
     let matches = get_matches();
 
     let text = matches.value_of("text").unwrap().to_lowercase();
-    let chance = matches
+    let mut chance = matches
         .value_of("chance")
         .unwrap_or("0.5")
         .parse::<f64>()
         .unwrap();
+
+    // If chance is more than 1, assume the user meant that in percentage
+    if chance > 1.0 {
+        chance /= 100.0;
+    }
+    if chance < 0.0 {
+        chance = 0.0;
+    }
 
     let mut spongebobified = String::new();
 
@@ -32,7 +40,7 @@ fn main() {
 
 fn get_matches() -> clap::ArgMatches<'static> {
     App::new("Spongebobify")
-        .version("1.2.1")
+        .version("1.2.2")
         .author("Oliver A. Thunæs <oliver@netron.no>")
         .about("Spongebobify your text")
         .arg(
